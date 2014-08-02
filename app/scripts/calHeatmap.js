@@ -19,6 +19,12 @@ angular.module('calHeatmap', []).directive('calHeatmap', function () {
         };
         angular.extend(defaults, config);
         cal.init(defaults);
+
+        scope.$watch('config.data', function (newData) {
+          if (newData) {
+            cal.update(newData);
+          }
+        });
     }
     return {
         template: '<div class="cal-heatmap" config="config"></div>',
